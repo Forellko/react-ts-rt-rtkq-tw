@@ -25,6 +25,7 @@ export default function HomePage() {
   const clickHandler = (username: string) => {
     fetchRepos(debounced);
     setDropdown(false);
+    setSearch('');
   };
 
   return (
