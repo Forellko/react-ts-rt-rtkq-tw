@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useSearchUsersQuery } from '../store/github/github.api';
 
 export default function HomePage() {
-  return (
-    <div>HomePage</div>
-  )
+  const { isLoading, isError, data } = useSearchUsersQuery('forellko');
+  return <div>HomePage</div>;
 }
