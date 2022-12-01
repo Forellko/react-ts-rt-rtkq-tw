@@ -27,7 +27,7 @@ export default function HomePage() {
           onChange={(e) => setSearch(e.target.value)}
         />
 
-        <ul className="absolute top-[42px] left-0 right-0 max-h-[200px] shadow-md bg-white">
+        <ul className="absolute top-[42px] left-0 right-0 max-h-[200px] overflow-y-scroll shadow-md bg-white">
           {isLoading && <p className="text-center">Loading</p>}
           {data?.map((user) => (
             <li
