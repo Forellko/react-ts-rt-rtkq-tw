@@ -1,11 +1,21 @@
 import React from 'react';
+import { useActions } from '../hooks/actions';
 import { IRepo } from '../models/models';
 
 export default function RepoCard({ repo }: { repo: IRepo }) {
+  const { addFavorite, removeFavorite } = useActions();
 
-  const addToFavourite = () => {
-    
-  }
+  const addToFavourite = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    addFavorite(repo.html_url);
+  };
+
+  const removeFromFavorite = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    removeFavorite(repo.html_url);
+  };
 
   return (
     <div className="border py-3 px-5 rounded cursor-pointer mb-2 hover:shadow-md hover:bg-gray-100 transition-all">
@@ -16,7 +26,18 @@ export default function RepoCard({ repo }: { repo: IRepo }) {
           Watchers: <span className="font-bold">{repo.watchers}</span>
         </p>
         <p className="text-sm font-thin">{repo?.description}</p>
-        <button className="py-2 px-4 bg-yellow-400 rounded hover:shadow-md transition-all" onClick={addToFavourite}>Add</button>
+        <button
+          className="py-2 px-4 bg-yellow-400 rounded hover:shadow-md transition-all mr-2"
+          onClick={addToFavourite}
+        >
+          Add
+        </button>
+        <button
+          className="py-2 px-4 bg-red-400 rounded hover:shadow-md transition-all"
+          onClick={removeFromFavorite}
+        >
+          Add
+        </button>
       </a>
     </div>
   );
